@@ -46,23 +46,35 @@ public class Rubrica implements Dictionary {
     @Override
     public void remove(Comparable key) {
         if (key == null) {
-                throw new NullPointerException();
+            throw new NullPointerException();
+        }
+        for (int i = 0; i < elenco.size(); i++) {
+            if (key.compareTo(elenco.get(i).getNome()) == 0) {
+                elenco.remove(i);
+                break;
             }
-            for (int i = 0; i < elenco.size(); i++) {
-                if (key.compareTo(elenco.get(i).getNome()) == 0) {
-                    elenco.remove(i);
-                    break;
-                }
-            }
+        }
         try {
             throw new DictionaryItemNotFoundException();
         } catch (DictionaryItemNotFoundException ex) {
             Logger.getLogger(Rubrica.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     @Override
     public Object find(Comparable key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(key==null) throw new NullPointerException();
+        for (int i = 0; i < elenco.size(); i++) {
+            if (key.compareTo(elenco.get(i).getNome()) == 0) {
+                return (Object) elenco.get(i).getNum();
+            }
+        }
+        try {
+            throw new DictionaryItemNotFoundException();
+        } catch (DictionaryItemNotFoundException ex) {
+            Logger.getLogger(Rubrica.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 }
