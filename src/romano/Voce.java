@@ -26,7 +26,9 @@ class Voce implements Comparable{
     Object getNome() {
         return nome;
     }
-
+    Object getNum() {
+        return numero;
+    }
     void setNum(int num) {
         this.numero=num;
     }
