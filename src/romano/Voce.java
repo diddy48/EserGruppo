@@ -9,11 +9,25 @@ package romano;
  *
  * @author roman
  */
-class Voce {
+class Voce implements Comparable{
     private String nome;
     private int numero;
     public Voce(String nome,int numero){
         this.nome=nome;
         this.numero=numero;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(nome.equals((String) o)) return 0;
+        else return 1;
+    }
+
+    Object getNome() {
+        return nome;
+    }
+
+    void setNum(int num) {
+        this.numero=num;
     }
 }
