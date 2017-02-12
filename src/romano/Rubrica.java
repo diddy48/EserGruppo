@@ -36,7 +36,7 @@ public class Rubrica implements Dictionary {
             for (int i = 0; i < elenco.size(); i++) {
                 if (key.compareTo(elenco.get(i).getNome()) == 0) {
                     elenco.get(i).setNum((int) value);
-                    break;
+                    return;
                 }
             }
             elenco.add(new Voce((String) key, (int) value));
@@ -51,7 +51,7 @@ public class Rubrica implements Dictionary {
         for (int i = 0; i < elenco.size(); i++) {
             if (key.compareTo(elenco.get(i).getNome()) == 0) {
                 elenco.remove(i);
-                break;
+                return;
             }
         }
         try {
@@ -68,7 +68,7 @@ public class Rubrica implements Dictionary {
         }
         for (int i = 0; i < elenco.size(); i++) {
             if (key.compareTo(elenco.get(i).getNome()) == 0) {
-                return (Object) elenco.get(i).getNum();
+                return "Numero: "+elenco.get(i).getNum();
             }
         }
         try {
@@ -76,7 +76,7 @@ public class Rubrica implements Dictionary {
         } catch (DictionaryItemNotFoundException ex) {
             Logger.getLogger(Rubrica.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
+        return "";
     }
 
     @Override
