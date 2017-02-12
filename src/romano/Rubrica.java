@@ -20,7 +20,7 @@ public class Rubrica implements Dictionary{
 
     @Override
     public void makeEmpty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        elenco=new ArrayList<Voce>();
     }
 
     @Override
