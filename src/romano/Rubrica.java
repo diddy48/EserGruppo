@@ -63,7 +63,9 @@ public class Rubrica implements Dictionary {
 
     @Override
     public Object find(Comparable key) {
-        if(key==null) throw new NullPointerException();
+        if (key == null) {
+            throw new NullPointerException();
+        }
         for (int i = 0; i < elenco.size(); i++) {
             if (key.compareTo(elenco.get(i).getNome()) == 0) {
                 return (Object) elenco.get(i).getNum();
@@ -77,4 +79,12 @@ public class Rubrica implements Dictionary {
         return null;
     }
 
+    @Override
+    public String toString() {
+        String str = "";
+        for (int i = 0; i < elenco.size(); i++) {
+            str+=elenco.get(i).toString()+"\n";
+        }
+        return str;
+    }
 }

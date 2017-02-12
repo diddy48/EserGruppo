@@ -32,4 +32,8 @@ class Voce implements Comparable{
     void setNum(int num) {
         this.numero=num;
     }
+    @Override
+    public String toString(){
+        return "Nome: "+nome+"  Numero: "+numero;
+    }
 }
