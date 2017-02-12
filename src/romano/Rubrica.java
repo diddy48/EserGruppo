@@ -6,6 +6,8 @@
 package romano;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,6 +36,7 @@ public class Rubrica implements Dictionary {
             for (int i = 0; i < elenco.size(); i++) {
                 if (key.compareTo(elenco.get(i).getNome()) == 0) {
                     elenco.get(i).setNum((int) value);
+                    break;
                 }
             }
             elenco.add(new Voce((String) key, (int) value));
@@ -42,9 +45,21 @@ public class Rubrica implements Dictionary {
 
     @Override
     public void remove(Comparable key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (key == null) {
+                throw new NullPointerException();
+            }
+            for (int i = 0; i < elenco.size(); i++) {
+                if (key.compareTo(elenco.get(i).getNome()) == 0) {
+                    elenco.remove(i);
+                    break;
+                }
+            }
+        try {
+            throw new DictionaryItemNotFoundException();
+        } catch (DictionaryItemNotFoundException ex) {
+            Logger.getLogger(Rubrica.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-
     @Override
     public Object find(Comparable key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
